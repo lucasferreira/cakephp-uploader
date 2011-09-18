@@ -4,7 +4,7 @@ Easy way to upload your files in Cake model based forms
 
 ## Usage:
 
-Load the Sluggable behavior in your model:
+Load the Uploader behavior in your model:
 
 	var $actsAs => array('Uploader' => array(
 		'img' => array('src' => 'youpathrelativetowebroot/image_:id.jpg')
