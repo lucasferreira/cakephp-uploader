@@ -234,11 +234,11 @@ class UploaderBehavior extends ModelBehavior
 		$new_data = array();
 		foreach($ff as $key=>$form)
 		{
-			if(empty($form['tmp_name'])) continue;
+			if(!is_array($form) || empty($form['tmp_name'])) continue;
 			
 			$fdata = array();
 			$fkeys = array_keys($form);
-			for($i=0;$i<count($form['tmp_name']); $i++)
+			for($i=0; $i<count($form['tmp_name']); $i++)
 			{
 				foreach($fkeys as $fk)
 				{
