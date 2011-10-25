@@ -10,7 +10,9 @@
  * Basic Usage:
  *
  * var $actsAs => array('Uploader' => array(
- *	'img' => array('src' => 'youpathrelativetowebroot/image_:id.jpg')
+ * 	'files' => array(
+ * 		'img' => array('src' => 'youpathrelativetowebroot/image_:id.jpg')
+ * 	)
  * ));
  *
  * @author Lucas Ferreira
