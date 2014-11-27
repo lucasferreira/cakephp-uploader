@@ -18,7 +18,7 @@
  * @author Lucas Ferreira
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  * @copyright Copyright 2011-2014, Burn web.studio - http://www.burnweb.com.br/
- * @version 1.3b
+ * @version 2.1b
  */
 
 define('UPLOADER_ONE_MB', 1048576);
@@ -29,7 +29,7 @@ class UploaderBehavior extends ModelBehavior
 	public $global = array();
 	public $dataFiles = array();
 
-	public function setup(&$model, $settings=array())
+	public function setup(Model $model, $settings=array())
 	{
 		$this->global = array(
 			'delete' => true,
@@ -71,7 +71,7 @@ class UploaderBehavior extends ModelBehavior
 		$this->options[$model->alias] = &$_options;
 	}
 
-	public function fileform2data(&$model, $ff, $data=array())
+	public function fileform2data(Model $model, $ff, $data=array())
 	{
 		$new_data = array();
 		foreach($ff as $key=>$form)
@@ -92,7 +92,7 @@ class UploaderBehavior extends ModelBehavior
 		return $new_data;
 	}
 
-	public function deleteFile(&$model, $field, $id)
+	public function deleteFile(Model $model, $field, $id)
 	{
 		if(!empty($this->options[$model->alias]['files'][$field]))
 		{
@@ -116,7 +116,7 @@ class UploaderBehavior extends ModelBehavior
 		return false;
 	}
 
-	public function beforeSave(&$model, $a)
+	public function beforeSave(Model $model, $a)
 	{
 		$this->dataFiles = array();
 
@@ -134,7 +134,7 @@ class UploaderBehavior extends ModelBehavior
 		}
 	}
 
-	public function afterSave(&$model, $created)
+	public function afterSave(Model $model, $created)
 	{
 		if(!empty($this->dataFiles[$model->alias]))
 		{
@@ -171,7 +171,7 @@ class UploaderBehavior extends ModelBehavior
 		}
 	}
 
-	public function afterFind(&$model, $data=array())
+	public function afterFind(Model $model, $data=array())
 	{
 		foreach($data as $i=>$d)
 		{
@@ -208,7 +208,7 @@ class UploaderBehavior extends ModelBehavior
 		return $data;
 	}
 
-	public function beforeDelete($model)
+	public function beforeDelete(Model $model)
 	{
 		if(!empty($model->{$model->primaryKey}) && $this->options[$model->alias]['delete'])
 		{
@@ -227,7 +227,7 @@ class UploaderBehavior extends ModelBehavior
 	/**
 	* Validation rules...
 	*/
-	public function isFile(&$model, $data, $check)
+	public function isFile(Model $model, $data, $check)
 	{
 		$field_name = key($data);
 		if(!isset($this->options[$model->alias]['files'][$field_name]))
@@ -262,7 +262,7 @@ class UploaderBehavior extends ModelBehavior
 		return true;
 	}
 
-	public function isFileUpload(&$model, $check, $rule=array())
+	public function isFileUpload(Model $model, $check, $rule=array())
 	{
 		if(empty($check)) return true;
 
@@ -276,7 +276,7 @@ class UploaderBehavior extends ModelBehavior
 		return true;
 	}
 
-	public function isNotBigger(&$model, $check, $rule=array())
+	public function isNotBigger(Model $model, $check, $rule=array())
 	{
 		if(empty($check)) return true;
 
@@ -298,7 +298,7 @@ class UploaderBehavior extends ModelBehavior
 		return true;
 	}
 
-	public function isValidExtension(&$model, $check, $rule=array())
+	public function isValidExtension(Model $model, $check, $rule=array())
 	{
 		if(empty($check)) return true;
 

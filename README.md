@@ -1,4 +1,4 @@
-# Uploader Behavior for CakePHP 1.3.x
+# Uploader Behavior for CakePHP 2.x
 
 Easy way to upload your files in Cake model based forms
 
